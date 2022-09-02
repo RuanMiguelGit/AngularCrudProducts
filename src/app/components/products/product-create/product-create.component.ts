@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductsService } from '../products.service';
 
 @Component({
   selector: 'app-product-create',
@@ -6,15 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-create.component.css']
 })
 export class ProductCreateComponent implements OnInit {
-proplegal = 'wowac'
-  constructor() { }
+  constructor(private productService : ProductsService, private router :Router) { }
 
   ngOnInit(): void {
   }
 
-  fazerAlgo():void{
-    this.proplegal = 'xablau'
-    console.log('eu faço algo')
+  createProduct() :void{
+    this.productService.ShowSnackBar("Produto Criado")
   }
+
+  cancel() : void {
+    this.router.navigate(['/products'])
+  }
+  
 
 }
